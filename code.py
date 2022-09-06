@@ -2,4 +2,4 @@ from time import sleep
 
 while True:
     print("Hello world!")
-    sleep(2)
+    sleep(3)
