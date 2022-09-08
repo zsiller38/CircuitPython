@@ -26,3 +26,4 @@ git config --global user.name YOURUSERNAME
 git config --global user.email YOURSCHOOLEMAIL
 ```
 3. Return to step 3 of the previous section.
+4. Hello
