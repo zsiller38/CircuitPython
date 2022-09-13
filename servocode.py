@@ -1,4 +1,6 @@
-"""CircuitPython Essentials Servo standard servo example"""
+#zachary siller
+#9/13/2022
+#goal to make a servo turn
 import time
 import board
 import pwmio

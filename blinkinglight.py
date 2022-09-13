@@ -1,3 +1,7 @@
+#zachary siller
+#9/13/2022
+#goal to turn on RBG light
+
 import board
 import neopixel
 import time
@@ -9,7 +13,7 @@ dot.brightness = 0.5
 print("Make it red!")
 
 while True:
-    dot.fill((0, 255, 0)) #tuuns light a color then turn it off and changes to a new color.
+    dot.fill((0, 255, 0)) #turns light a color then turn it off and changes to a new color.
     time.sleep(.5)
     dot.fill((0, 0, 0))
     time.sleep(.5)
