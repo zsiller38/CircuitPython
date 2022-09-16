@@ -1,5 +1,7 @@
-# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
-# SPDX-License-Identifier: MIT
+# Zachary Siller
+#Rainbow distance sensor
+# Goal to change the color of a RBG light using and Ultrasonic sensor
+
 import digitalio
 import simpleio
 import time
@@ -18,16 +20,16 @@ Green = 0
 Blue = 0
 
 while True:
-    
+
     try:
         cm = sonar.distance
         print((sonar.distance, Red, Green, Blue))
         time.sleep(0.01)
         if cm < 5:
-            led.fill((255, 0, 0))#setting the color with RGB values
+            led.fill((255, 0, 0))#turns the light red if distance less than 5
         elif cm > 5 and cm < 10:
             Green = 0
-            Red = simpleio.map_range(cm, 5.1, 10, 255, 0)
+            Red = simpleio.map_range(cm, 5.1, 10, 255, 0) #from distance 5 to 10 red and blue values based on distance from ultrasonic sensor
             Blue = simpleio.map_range(Red, 0, 255, 255, 0)
             led.fill((Red, Green, Blue))
         else:
