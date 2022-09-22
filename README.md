@@ -29,3 +29,4 @@ git config --global user.email YOURSCHOOLEMAIL
 4. Hello
 
 <div style="width:100%;height:0;padding-bottom:178%;position:relative;"><iframe src="https://giphy.com/embed/cw1V6IyxxoQcCFyI2S" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cw1V6IyxxoQcCFyI2S">via GIPHY</a></p>
+![image](https://user-images.githubusercontent.com/71402927/191832586-642c64ab-8e03-43e8-bf6f-e5421599f2d8.png)
