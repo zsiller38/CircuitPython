@@ -1,5 +1,5 @@
 # CircuitPython
-This repository will actually serve as a aid to help you get started with your own template.  You should copy the raw form of this readme into your own, and use this template to write your own.  If you want to draw inspiration from other classmates, feel free to check [this directory of all students!](https://github.com/chssigma/Class_Accounts).
+
 ## Table of Contents
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
@@ -90,10 +90,10 @@ I made a neopixel light change colors when distance changed
 ```python
 ```
 
-# Zachary Siller
-#Rainbow distance sensor
-# Goal to change the color of a RBG light using and Ultrasonic sensor
-
+# Rainbow distance sensor
+Goal to change the color of a RBG light using and Ultrasonic sensor
+    
+```python
 import digitalio
 import simpleio
 import time
@@ -131,8 +131,6 @@ while True:
     except RuntimeError:
         print("Retrying!")
     time.sleep(0.01)
-    
-```
 ```
 
 ### Evidence
