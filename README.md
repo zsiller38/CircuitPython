@@ -45,31 +45,42 @@ This projects hardest component was linking my github repository and vs code. On
 ### Description & Code
 I made a servo turn with circuit python and an adafruit
 ```python
-#zachary siller
-#9/13/2022
-#goal to make a servo turn
-import time
+# Zachary Siller
+# 9/29/2022
+# hit button to make a servo turn
+
 import board
-import pwmio
+import time 
+import math
+import pwmio 
 from adafruit_motor import servo
+from digitalio import DigitalInOut, Direction, Pull ## sets pin numbers and states for buttons
+btn = DigitalInOut(board.D3)
+btn2 = DigitalInOut(board.D2)
+btn.direction = Direction.INPUT
+btn2.direction = Direction.INPUT
+btn.pull = Pull.UP
+btn2.pull = Pull.UP
 
-#sets pin number
-pwm = pwmio.PWMOut(board.D9, duty_cycle=2 ** 15, frequency=50)
+pwm = pwmio.PWMOut(board.D5, duty_cycle=2 **15, frequency=50)
+myServo = servo.Servo(pwm)
 
-
-my_servo = servo.Servo(pwm)
-
+print("starting")
 while True:
-    for angle in range(0, 180, 5): #moves servo then moves it back
-        my_servo.angle = angle
-        time.sleep(0.05)
-    for angle in range(180, 0, -5): 
-        time.sleep(0.05)
+    print("re")
+    if btn.value == True: ## if button one is pressed turn 180 degrees
+        myServo.angle = 180
+        time.sleep(1)
+        print("Right")
+    elif btn2.value == True : ## if button 2 is pressed turn back to start position
+        myServo.angle = 0
+        time.sleep(1)
+        print("Left")
 ```
 
 ### Evidence
 
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
 
 ### Wiring
 
@@ -121,7 +132,7 @@ while True:
     time.sleep(0.01)
 ```
 ### Evidence
-![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
+
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
 
