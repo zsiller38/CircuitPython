@@ -77,8 +77,10 @@ Pictures / Gifs of your work should go here.  You need to communicate what your 
 
 
 ## Rainbow distance sensor
+
+### Description and Code
 Goal to change the color of a RBG light using and Ultrasonic sensor
-    
+  
 ```python
 import digitalio
 import simpleio
@@ -118,10 +120,12 @@ while True:
         print("Retrying!")
     time.sleep(0.01)
 ```
-
 ### Evidence
-
+![spinningMetro_Optimized]https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
 ### Wiring
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
+
+
 
 ### Reflection
 This project was very hard because I had trouble understanding the mapping function used. I needed to get some help from classmates to complete the code but now I understand how and why the code works. WHile coding there were problems with the if statements to based on the distance the sensor was reading. We did'nt use an elif statement and instead just used if statements. This created an issue were the code would jump statements and do the wrong thing. We did not need elif statements in c++ so it was important to learn about them.
