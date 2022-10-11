@@ -29,20 +29,15 @@ while True:
 ![spinningMetro_Optimized](https://user-images.githubusercontent.com/54641488/192549584-18285130-2e3b-4631-8005-0792c2942f73.gif)
 
 
-And here is how you should give image credit to someone, if you use their work:
-
 Image credit goes to [Rick A](https://www.youtube.com/watch?v=dQw4w9WgXcQ&scrlybrkr=8931d0bc)
 
 
 
 ### Wiring
-Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
-Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
+No wiring required
 
 ### Reflection
-What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience?  Your ultimate goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person.
-
-
+This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. learning the new language should not be hard because it is way for intuitive that c++.
 
 
 ## CircuitPython_Servo
@@ -81,16 +76,7 @@ Pictures / Gifs of your work should go here.  You need to communicate what your 
 ### Reflection
 
 
-
-## Sonar RGB
-
-### Description & Code
-I made a neopixel light change colors when distance changed
-
-```python
-```
-
-# Rainbow distance sensor
+## Rainbow distance sensor
 Goal to change the color of a RBG light using and Ultrasonic sensor
     
 ```python
@@ -138,7 +124,7 @@ while True:
 ### Wiring
 
 ### Reflection
-
+This project was very hard because I had trouble understanding the mapping function used. I needed to get some help from classmates to complete the code but now I understand how and why the code works. WHile coding there were problems with the if statements to based on the distance the sensor was reading. We did'nt use an elif statement and instead just used if statements. This created an issue were the code would jump statements and do the wrong thing. We did not need elif statements in c++ so it was important to learn about them.
 
 
 ## CircuitPython_LCD
