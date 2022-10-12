@@ -83,6 +83,7 @@ while True:
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
 
 ### Wiring
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/servocircuitpythonwiring.png?raw=true)
 
 ### Reflection
 
@@ -132,6 +133,7 @@ while True:
     time.sleep(0.01)
 ```
 ### Evidence
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy.gif?raw=true)
 
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
