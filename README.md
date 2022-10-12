@@ -86,7 +86,7 @@ while True:
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/servocircuitpythonwiring.png?raw=true)
 
 ### Reflection
-
+This project was relativly easy because I had already done the lame project in arduino, so the code was very easy. The first time I did the project I did not have the buttons but intergrating the buttons was very easy.
 
 ## Rainbow distance sensor
 
