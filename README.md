@@ -94,6 +94,9 @@ This project was relativly easy because I had already done the lame project in a
 Goal to change the color of a RBG light using and Ultrasonic sensor
   
 ```python
+#Zachary Siller
+#10/20/2022
+#change a RBG light based on sensor data
 import digitalio
 import simpleio
 import time
