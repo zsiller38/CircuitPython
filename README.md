@@ -149,10 +149,13 @@ This project was very hard because I had trouble understanding the mapping funct
 ### Description & Code
 Create a code that counts the number of times a button is pressed and uses another button to toggle counting up and down.
 ```python
+#Zachary Siller
+#10/20/2022
+#Connect a button and lcd to count the number of button presses.
 import board
 import math
 import time
-from lcd.lcd import LCD                                     #[4-14] code to connect 
+from lcd.lcd import LCD                                     #connects buttons and LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface   #input pins to board
 from digitalio import DigitalInOut, Direction, Pull
 i2c = board.I2C()
@@ -164,16 +167,15 @@ btn2.direction = Direction.INPUT
 btn.pull = Pull.UP
 btn2.pull = Pull.UP
 num = 0                         #Display Variable
-Redo = True                     #[16-17] Variable to "debounce" button
-
+Redo = True                     
 lcd.print("Starting")
-while True:                                 #[19-30] Code to add and subtract 
-    if btn.value == True and Redo == True:  #from variable and 
-        if btn2.value == True:              #"debounce" the  #buttons.         
+while True:                                 
+    if btn.value == True and Redo == True:  
+        if btn2.value == True:                    #counts down
             num = num - 1
         else:
             num = num + 1                                   
-        lcd.clear()
+        lcd.clear()                             #counts down
         lcd.print(str(num))
         Redo = False
         time.sleep(.1)
@@ -189,7 +191,7 @@ while True:                                 #[19-30] Code to add and subtract
 Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 
 ### Wiring
-
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/lcdwiring.png?raw=true)
 ### Reflection
 
 
