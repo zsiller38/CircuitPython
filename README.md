@@ -184,7 +184,9 @@ while True:                                 #[19-30] Code to add and subtract
 
 ### Evidence
 
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/ezgif-2.gif?raw=true)
+
+Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 
 ### Wiring
 
