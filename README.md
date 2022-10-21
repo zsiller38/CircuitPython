@@ -5,7 +5,7 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython_LCD](#CircuitPython_LCD)
-* [NextAssignmentGoesHere](#NextAssignment)
+
 ---
 
 ## Hello_CircuitPython
@@ -196,6 +196,7 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/lcdwiring.png?raw=true)
 ### Reflection
+This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
 
 
