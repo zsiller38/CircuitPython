@@ -11,7 +11,7 @@
 ## Hello_CircuitPython
 
 ### Description & Code
-I made the serial monitor say hello world with circuit python
+I made the serial monitor say hello world using the print function in circuit python
 ```python
 #zachary siller
 #9/13/2022
@@ -37,13 +37,13 @@ Image credit goes to [Rick A](https://www.youtube.com/watch?v=dQw4w9WgXcQ&scrlyb
 No wiring required
 
 ### Reflection
-This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. learning the new language should not be hard because it is way for intuitive that c++.
+This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. Learning the new language should not be hard because it is way for intuitive that c++.
 
 
 ## CircuitPython_Servo
 
 ### Description & Code
-I made a servo turn with circuit python and an adafruit
+I encorperated principles from my button servo from c++ into circuit python to make a servo turn 2 different directions when buttons were pressed. This was done using a basic else if statement and reading buttons states.
 ```python
 # Zachary Siller
 # 9/29/2022
@@ -86,12 +86,12 @@ while True:
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/servocircuitpythonwiring.png?raw=true)
 
 ### Reflection
-This project was relativly easy because I had already done the lame project in arduino, so the code was very easy. The first time I did the project I did not have the buttons but intergrating the buttons was very easy.
+This project was relativly easy because I had already done the same project in arduino, so the code was very easy. The first time I did the project I did not have the buttons but intergrating the buttons was very easy all it required was some new wiring some help from a friend and a few extra lines of code.
 
 ## Rainbow distance sensor
 
 ### Description and Code
-Goal to change the color of a RBG light using and Ultrasonic sensor
+Goal to change the color of a RBG light using and Ultrasonic sensor. This is done by mapping the distance values onto RBG value spectrum. As the distance changes the map function will change the values of the RBG accordingly. 
   
 ```python
 #Zachary Siller
@@ -150,7 +150,7 @@ This project was very hard because I had trouble understanding the mapping funct
 ## CircuitPython_LCD
 
 ### Description & Code
-Create a code that counts the number of times a button is pressed and uses another button to toggle counting up and down.
+Create a code that counts the number of times a button is pressed and uses another button to toggle counting up and down. This is done by first downloading some extra code from someone elses github repository to make the LCD code work correctly with the metro board. Followed by some else if statements checking the button state of one button and the checking the other one based on the first button state.
 ```python
 #Zachary Siller
 #10/20/2022
