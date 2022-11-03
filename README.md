@@ -5,13 +5,13 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython_LCD](#CircuitPython_LCD)
-* [NextAssignmentGoesHere](#NextAssignment)
+
 ---
 
 ## Hello_CircuitPython
 
 ### Description & Code
-I made the serial monitor say hello world with circuit python
+I made the serial monitor say hello world using the print function in circuit python
 ```python
 #zachary siller
 #9/13/2022
@@ -37,51 +37,66 @@ Image credit goes to [Rick A](https://www.youtube.com/watch?v=dQw4w9WgXcQ&scrlyb
 No wiring required
 
 ### Reflection
-This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. learning the new language should not be hard because it is way for intuitive that c++.
+This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. Learning the new language should not be hard because it is way for intuitive that c++.
 
 
 ## CircuitPython_Servo
 
 ### Description & Code
-I made a servo turn with circuit python and an adafruit
+I encorperated principles from my button servo from c++ into circuit python to make a servo turn 2 different directions when buttons were pressed. This was done using a basic else if statement and reading buttons states.
 ```python
-#zachary siller
-#9/13/2022
-#goal to make a servo turn
-import time
+# Zachary Siller
+# 9/29/2022
+# hit button to make a servo turn
+
 import board
-import pwmio
+import time 
+import math
+import pwmio 
 from adafruit_motor import servo
+from digitalio import DigitalInOut, Direction, Pull ## sets pin numbers and states for buttons
+btn = DigitalInOut(board.D3)
+btn2 = DigitalInOut(board.D2)
+btn.direction = Direction.INPUT
+btn2.direction = Direction.INPUT
+btn.pull = Pull.UP
+btn2.pull = Pull.UP
 
-#sets pin number
-pwm = pwmio.PWMOut(board.D9, duty_cycle=2 ** 15, frequency=50)
+pwm = pwmio.PWMOut(board.D5, duty_cycle=2 **15, frequency=50)
+myServo = servo.Servo(pwm)
 
-
-my_servo = servo.Servo(pwm)
-
+print("starting")
 while True:
-    for angle in range(0, 180, 5): #moves servo then moves it back
-        my_servo.angle = angle
-        time.sleep(0.05)
-    for angle in range(180, 0, -5): 
-        time.sleep(0.05)
+    print("re")
+    if btn.value == True: ## if button one is pressed turn 180 degrees
+        myServo.angle = 180
+        time.sleep(1)
+        print("Right")
+    elif btn2.value == True : ## if button 2 is pressed turn back to start position
+        myServo.angle = 0
+        time.sleep(1)
+        print("Left")
 ```
 
 ### Evidence
 
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
 
 ### Wiring
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/servocircuitpythonwiring.png?raw=true)
 
 ### Reflection
-
+This project was relativly easy because I had already done the same project in arduino, so the code was very easy. The first time I did the project I did not have the buttons but intergrating the buttons was very easy all it required was some new wiring some help from a friend and a few extra lines of code.
 
 ## Rainbow distance sensor
 
 ### Description and Code
-Goal to change the color of a RBG light using and Ultrasonic sensor
+Goal to change the color of a RBG light using and Ultrasonic sensor. This is done by mapping the distance values onto RBG value spectrum. As the distance changes the map function will change the values of the RBG accordingly. 
   
 ```python
+#Zachary Siller
+#10/20/2022
+#change a RBG light based on sensor data
 import digitalio
 import simpleio
 import time
@@ -121,7 +136,8 @@ while True:
     time.sleep(0.01)
 ```
 ### Evidence
-![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy%20(1).gif?raw=true)
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/giphy.gif?raw=true)
+
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
 
@@ -134,35 +150,55 @@ This project was very hard because I had trouble understanding the mapping funct
 ## CircuitPython_LCD
 
 ### Description & Code
-
+Create a code that counts the number of times a button is pressed and uses another button to toggle counting up and down. This is done by first downloading some extra code from someone elses github repository to make the LCD code work correctly with the metro board. Followed by some else if statements checking the button state of one button and the checking the other one based on the first button state.
 ```python
-Code goes here
+#Zachary Siller
+#10/20/2022
+#Connect a button and lcd to count the number of button presses.
+import board
+import math
+import time
+from lcd.lcd import LCD                                     #connects buttons and LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface   #input pins to board
+from digitalio import DigitalInOut, Direction, Pull
+i2c = board.I2C()
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+btn = DigitalInOut(board.D3)
+btn2 = DigitalInOut(board.D2)
+btn.direction = Direction.INPUT
+btn2.direction = Direction.INPUT
+btn.pull = Pull.UP
+btn2.pull = Pull.UP
+num = 0                         #Display Variable
+Redo = True                     
+lcd.print("Starting")
+while True:                                 
+    if btn.value == True and Redo == True:  
+        if btn2.value == True:                    #counts down
+            num = num - 1
+        else:
+            num = num + 1                                   
+        lcd.clear()                             #counts down
+        lcd.print(str(num))
+        Redo = False
+        time.sleep(.1)
+    elif btn.value == False and Redo == False:
+        Redo = True
 
 ```
 
 ### Evidence
 
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/ezgif-2.gif?raw=true)
+
+Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 
 ### Wiring
-
+![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/lcdwiring.png?raw=true)
 ### Reflection
+This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
 
 
 
 
-## NextAssignment
-
-### Description & Code
-
-```python
-Code goes here
-
-```
-
-### Evidence
-
-### Wiring
-
-### Reflection
