@@ -11,7 +11,7 @@ import analogio
 i2c = board.I2C()
 tmp36 = analogio.AnalogIn(board.A0)
 # some LCDs are 0x3f... some are 0x27.
-lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 def tmp36_temperature_C(analogin):              #Convert millivolts to temperature
     millivolts = analogin.value * (analogin.reference_voltage * 1000 / 65535)
     return (millivolts - 500) / 10
