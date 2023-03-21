@@ -1,17 +1,33 @@
-import board   #[Lines 1-8] Importing all Neccessary libraries to communicate with LCD
+import analogio
+import board
 import time
+import digitalio
 from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
-from digitalio import DigitalInOut, Direction, Pull
-import board
-import analogio
 
+# turn on lcd power switch pin
+lcdPower = digitalio.DigitalInOut(board.D8)
+lcdPower.direction = digitalio.Direction.INPUT
+lcdPower.pull = digitalio.Pull.DOWN
+
+# Keep the I2C protocol from running until the LCD has been turned on
+# You need to flip the switch on the breadboard to do this.
+while lcdPower.value is False:
+    print("still sleeping")
+    time.sleep(0.1)
+
+# Time to start up the LCD!
+time.sleep(1)
+print(lcdPower.value)
+print("running")
+
+i2c = board.I2C()
+# some LCDs are 0x3f... some are 0x27.
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 
 # get and i2c object
 i2c = board.I2C()
 tmp36 = analogio.AnalogIn(board.A0)
-# some LCDs are 0x3f... some are 0x27.
-lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 def tmp36_temperature_C(analogin):              #Convert millivolts to temperature
     millivolts = analogin.value * (analogin.reference_voltage * 1000 / 65535)
     return (millivolts - 500) / 10
