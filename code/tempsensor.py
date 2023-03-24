@@ -35,7 +35,8 @@ def tmp36_temperature_C(analogin):              #Convert millivolts to temperatu
 
 while True:
     # Read the temperature in Celsius.
-    temp_C = tmp36_temperature_C(tmp36)  
+    print("tmp36")
+    temp_C = tmp36_temperature_C(tmp36)
     # Convert to Fahrenheit.
     temp_F = (temp_C * 9/5) + 32
     # Print out the value and delay a second before looping again.
@@ -48,4 +49,4 @@ while True:
         lcd.print("It's just right")
     lcd.set_cursor_pos(1, 0)
     lcd.print("Temp: {}F".format(temp_F))
-    time.sleep(.5) 
+    time.sleep(.5)
