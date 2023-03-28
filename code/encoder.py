@@ -1,34 +1,65 @@
+import time
 import rotaryio
 import board
-import digitalio
-import neopixel
 from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+from digitalio import DigitalInOut, Direction, Pull
 
-# get and i2c object
+encoder = rotaryio.IncrementalEncoder(board.D3, board.D2)
+last_position = 0
+btn = DigitalInOut(board.D1)
+btn.direction = Direction.INPUT
+btn.pull = Pull.UP
+state = 0
+Buttonyep = 1
+
 i2c = board.I2C()
-
-# some LCDs are 0x3f... some are 0x27.
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 
-led: neopixel.Neopixel = neopixel.NeoPixel(board.NEOPIXEL, 1) # initialization of hardware
-print("neopixel")
+ledGreen = DigitalInOut(board.D8)
+ledYellow = DigitalInOut(board.D9)
+ledRed = DigitalInOut(board.D10)
+ledGreen.direction = Direction.OUTPUT
+ledYellow.direction = Direction.OUTPUT
+ledRed.direction = Direction.OUTPUT
 
-led.brightness = 0.1
-
-button = digitalio.DigitalInOut(board.D12)
-button.direction = digitalio.Direction.INPUT
-button.pull = digitalio.Pull.UP
-
-colors = [("stop", (255, 0, 0)), ("caution", (128, 128, 0)), ("go", (0, 255, 0))]
-
-encoder = rotaryio.IncrementalEncoder(board.D10, board.D9, 2)
-last_position = None
 while True:
     position = encoder.position
-    if last_position is None or position != last_position:
-        lcd.clear()
-        lcd.print(colors[position % len(colors)][0])
-    if(not button.value):
-        led[0] = colors[position % len(colors)][1]
+    if position != last_position:
+        if position > last_position:
+            state = state + 1
+        elif position < last_position:
+            state = state - 1
+        if state > 2:
+            state = 2
+        if state < 0:
+            state = 0
+        print(state)
+        if state == 0: 
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("GOOOOO")
+        elif state == 1:
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("yellow")
+        elif state == 2:
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("STOPPP")
+    if btn.value == 0 and Buttonyep == 1:
+        print("buttion")
+        if state == 0: 
+                ledGreen.value = True
+                ledRed.value = False
+                ledYellow.value = False
+        elif state == 1:
+                ledYellow.value = True
+                ledRed.value = False
+                ledGreen.value = False
+        elif state == 2:
+                ledRed.value = True
+                ledGreen.value = False
+                ledYellow.value = False
+        Buttonyep = 0
+    if btn.value == 1:
+        time.sleep(.1)
+        Buttonyep = 1
     last_position = position
