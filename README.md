@@ -198,6 +198,170 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Reflection
 This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
+## CircuitPython Photointerupter
+
+### Description and Code
+```Python
+# Zachary Siller
+# Engineering 3 3/28/2023
+# Count using a photointerupter
+import time
+import digitalio
+import board
+
+photoI = digitalio.DigitalInOut(board.D7) #sets photointerupter pin
+photoI.direction = digitalio.Direction.INPUT
+photoI.pull = digitalio.Pull.UP
+
+last_photoI = True
+last_update = -4
+
+photoICrosses = 0
+
+while True:
+    if time.monotonic()-last_update > 4:
+        print("The number of crosses is {photoICrosses}")
+        last_update = time.monotonic()
+
+    if last_photoI != photoI.value and not photoI.value: #checks the previous photo state and if they are different it adds one
+        photoICrosses += 1
+    last_photoI = photoI.value
+
+```
+
+### Evidence
+![ezgif-3-097eb97f2f](https://user-images.githubusercontent.com/71402927/228946056-1d1356f9-8fd0-410c-a610-d5ec2c489edc.gif)
+
+
+### Wiring
+![Screenshot (2)](https://user-images.githubusercontent.com/71402927/228943179-4e4c2d71-57ca-43ea-a97f-4a49137a327c.png)
+
+### Reflection
+
+## Rotary Encoder
+### Description and Code
+```Python
+# Zachary Siller
+# Rotary encoder
+# 3/30/2023
+import time
+import rotaryio
+import board
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+from digitalio import DigitalInOut, Direction, Pull
+
+encoder = rotaryio.IncrementalEncoder(board.D3, board.D2) # Sets up the encoder pins and button
+last_position = 0
+btn = DigitalInOut(board.D1)
+btn.direction = Direction.INPUT
+btn.pull = Pull.UP
+state = 0
+Buttonyep = 1
+
+i2c = board.I2C()
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+
+ledGreen = DigitalInOut(board.D8)     # assigns led pins 
+ledYellow = DigitalInOut(board.D9)
+ledRed = DigitalInOut(board.D10)
+ledGreen.direction = Direction.OUTPUT
+ledYellow.direction = Direction.OUTPUT
+ledRed.direction = Direction.OUTPUT
+
+while True:
+    position = encoder.position    # checks if the encoder has turned and checks which direction it has turned
+    if position != last_position:
+        if position > last_position:
+            state = state + 1
+        elif position < last_position:
+            state = state - 1
+        if state > 2:
+            state = 2
+        if state < 0:
+            state = 0
+        print(state)
+        if state == 0:      # prints based on state
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("GOOOOO")
+        elif state == 1:
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("yellow")
+        elif state == 2:
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("STOPPP")
+    if btn.value == 0 and Buttonyep == 1:
+        print("buttion")
+        if state == 0:  # changes LED color
+                ledGreen.value = True
+                ledRed.value = False
+                ledYellow.value = False
+        elif state == 1:
+                ledYellow.value = True
+                ledRed.value = False
+                ledGreen.value = False
+        elif state == 2:
+                ledRed.value = True
+                ledGreen.value = False
+                ledYellow.value = False
+        Buttonyep = 0
+    if btn.value == 1:
+        time.sleep(.1)
+        Buttonyep = 1
+    last_position = position
+    
+```
+### Evidence
+### Wiring
+### Reflection
+
+## Temp Sensor
+### Description and Code
+``` Python
+#Zachary Siller
+#Temp Sensor
+#3/20/2023
+import board   #[Lines 1-8] Importing all Neccessary libraries to communicate with LCD
+import time
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+from digitalio import DigitalInOut, Direction, Pull
+import board
+import analogio
+
+
+# get and i2c object
+i2c = board.I2C()
+tmp36 = analogio.AnalogIn(board.A0)
+# some LCDs are 0x3f... some are 0x27.
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+def tmp36_temperature_C(analogin):              #Convert millivolts to temperature
+    millivolts = analogin.value * (analogin.reference_voltage * 1000 / 65535)
+    return (millivolts - 500) / 10
+
+
+while True:
+    # Read the temperature in Celsius.
+    temp_C = tmp36_temperature_C(tmp36)
+    # Convert to Fahrenheit.
+    temp_F = (temp_C * 9/5) + 32
+    # Print out the value 
+    lcd.set_cursor_pos(0, 0)           #print reactions to tempratures
+    if temp_F > 75:
+        lcd.print("it's too hot!")
+    elif temp_F < 70:
+        lcd.print("it's too cold")
+    else:
+        lcd.print("It's just right")
+    lcd.set_cursor_pos(1, 0)
+    lcd.print("Temp: {}F".format(temp_F))
+    time.sleep(.5)
+
+```
+
+### Evidence
+### Wiring
+### Reflection
 
 
 
