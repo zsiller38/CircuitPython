@@ -1,14 +1,19 @@
 # CircuitPython
 
 ## Table of Contents
+
 * [Table of Contents](#TableOfContents)
-* [Hello_CircuitPython](#Hello_CircuitPython)
-* [CircuitPython_Servo](#CircuitPython_Servo)
-* [CircuitPython_LCD](#CircuitPython_LCD)
+* [Hello_CircuitPython](#HelloCircuitPython)
+* [CircuitPython_Servo](#CircuitPythonServo)
+* [CircuitPython_LCD](#CircuitPythonLCD)
+* [CircuitPython RainbowSensor](#RainbowDistanceSensor)
+* [CircuitPython Photointerupter](#Photointerupter)
+* [CircuitPython RotaryEncoder](#RotaryEncoder)
+* [CircuitPython TempratureSensor](#TempSensor)
 
 ---
 
-## Hello_CircuitPython
+## Hello CircuitPython
 
 ### Description & Code
 I made the serial monitor say hello world using the print function in circuit python
@@ -40,7 +45,7 @@ No wiring required
 This projects hardest component was linking my github repository and vs code. Once that was completed it was very easy to use VS code and upload changes to github. I already enjoy circuit python far more than c++. Learning the new language should not be hard because it is way for intuitive that c++.
 
 
-## CircuitPython_Servo
+## CircuitPython Servo
 
 ### Description & Code
 I encorperated principles from my button servo from c++ into circuit python to make a servo turn 2 different directions when buttons were pressed. This was done using a basic else if statement and reading buttons states.
@@ -88,7 +93,7 @@ while True:
 ### Reflection
 This project was relativly easy because I had already done the same project in arduino, so the code was very easy. The first time I did the project I did not have the buttons but intergrating the buttons was very easy all it required was some new wiring some help from a friend and a few extra lines of code.
 
-## Rainbow distance sensor
+## Rainbow Distance Sensor
 
 ### Description and Code
 Goal to change the color of a RBG light using and Ultrasonic sensor. This is done by mapping the distance values onto RBG value spectrum. As the distance changes the map function will change the values of the RBG accordingly. 
@@ -147,7 +152,7 @@ while True:
 This project was very hard because I had trouble understanding the mapping function used. I needed to get some help from classmates to complete the code but now I understand how and why the code works. WHile coding there were problems with the if statements to based on the distance the sensor was reading. We did'nt use an elif statement and instead just used if statements. This created an issue were the code would jump statements and do the wrong thing. We did not need elif statements in c++ so it was important to learn about them.
 
 
-## CircuitPython_LCD
+## CircuitPython LCD
 
 ### Description & Code
 Create a code that counts the number of times a button is pressed and uses another button to toggle counting up and down. This is done by first downloading some extra code from someone elses github repository to make the LCD code work correctly with the metro board. Followed by some else if statements checking the button state of one button and the checking the other one based on the first button state.
@@ -198,9 +203,10 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Reflection
 This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
-## CircuitPython Photointerupter
+## Photointerupter
 
 ### Description and Code
+The goal of this code was to utilize a photointerupter to count the number of times something passes in between the photointerupter. Then using print the counter number using the serial monitor.
 ```Python
 # Zachary Siller
 # Engineering 3 3/28/2023
@@ -234,12 +240,15 @@ while True:
 
 
 ### Wiring
-![Screenshot (2)](https://user-images.githubusercontent.com/71402927/228943179-4e4c2d71-57ca-43ea-a97f-4a49137a327c.png)
+![Screenshot (2)](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-03-31%202.05.06%20PM.png?raw=true)
 
 ### Reflection
+This code was easy to get working mainly because it was the only one that did not involve a serial monitor. I used code from [River](https://github.com/rivques/) as a baseline to understand what was going on. I initially did not know what time.monotonic meant but now I know it is simply a clock that cannot move backwards. This assignment was cool and satisfying when it was working.
 
-## Rotary Encoder
+## Rotary_Encoder
+
 ### Description and Code
+This code is using a rotary encoder to change states. The states determine what LEDs are one. A green red and yellow LEDs are used to mimick a traffic stop. Then a push button on the rotary encoder turns the light on and off once the encoder selects the state. The rotary encoder uses 5 pins. A power, ground, buton, and two others which are used to determine which way the encoder was turned and how fast. Finally an LCD is used to display prompts based on what the encoder is selecting. 
 ```Python
 # Zachary Siller
 # Rotary encoder
@@ -312,11 +321,18 @@ while True:
     
 ```
 ### Evidence
-### Wiring
-### Reflection
+![ezgif-3-097eb97f2f](https://user-images.githubusercontent.com/91289762/226446966-8a585aef-7c21-480a-8ca3-219ae95f4cef.gif)
 
-## Temp Sensor
+Image Credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
+### Wiring
+![ezgif-3-097eb97f2f](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-03-31%202.11.26%20PM.png)
+### Reflection
+This project was extremely frustrating. VS code had not been working for the previous few days so I was using Mu. Mu was actually easy to use although it is less versatile and complex than VS code. The primarly issue was with the LCD. Sometimes the LCD sucks to much power from the metro board and when this happens the board shuts of and refuses to connect. I had to implement a simple switch which would allow the board to connect to the computer before the LCD was connectd. Later on I switched to connecting the LCD after the board was already connected which was far easier. I used code from [Kaz](https://github.com/kshinoz98/CircuitPython) to help get the project started. The code is not that complex. It consists of some code assigning states based on how the encoder has moved and then if statements to turn of the LEDs. This project was cool and I enjoyed it.
+
+## Temp_Sensor
+
 ### Description and Code
+The goal of this code was to use a temp sensor and convert its output into celcius. Then using an LCD display the temp in celcius and farenhiet and print some phrases based on the temprature. 
 ``` Python
 #Zachary Siller
 #Temp Sensor
@@ -360,10 +376,13 @@ while True:
 ```
 
 ### Evidence
-![ezgif-3-097eb97f2f](https://github.com/zsiller38/CircuitPython/blob/master/Images/03ed5678-f2e1-4d69-86ba-d664db32f559.mp4)
-### Wiring
-### Reflection
+![ezgif-3-097eb97f2f](https://github.com/zsiller38/CircuitPython/blob/master/Images/ezgif.com-crop.gif)
 
+Image Credit goes to [Vincent](https://github.com/vmanka25/CircuitPython)
+### Wiring
+![ezgif-3-097eb97f2f](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-03-31%202.02.34%20PM.png)
+### Reflection
+This code was probably the easiest of them all. The code is very simple. The one thing I learned about was how a temprature sensor detects temprature. It converts the surrounding temprature into millivolts which we can ten convert into celcius and farenhiet. This assignment was very cool because now I know a lot more about temprature and how it is mesured. 
 
 
 
