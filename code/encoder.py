@@ -1,3 +1,6 @@
+# Zachary Siller
+# Rotary encoder
+# 3/30/2023
 import time
 import rotaryio
 import board
@@ -5,7 +8,7 @@ from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 from digitalio import DigitalInOut, Direction, Pull
 
-encoder = rotaryio.IncrementalEncoder(board.D3, board.D2)
+encoder = rotaryio.IncrementalEncoder(board.D3, board.D2) # Sets up the encoder pins and button
 last_position = 0
 btn = DigitalInOut(board.D1)
 btn.direction = Direction.INPUT
@@ -16,7 +19,7 @@ Buttonyep = 1
 i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 
-ledGreen = DigitalInOut(board.D8)
+ledGreen = DigitalInOut(board.D8)     # assigns led pins 
 ledYellow = DigitalInOut(board.D9)
 ledRed = DigitalInOut(board.D10)
 ledGreen.direction = Direction.OUTPUT
@@ -24,7 +27,7 @@ ledYellow.direction = Direction.OUTPUT
 ledRed.direction = Direction.OUTPUT
 
 while True:
-    position = encoder.position
+    position = encoder.position    # checks if the encoder has turned and checks which direction it has turned
     if position != last_position:
         if position > last_position:
             state = state + 1
@@ -35,7 +38,7 @@ while True:
         if state < 0:
             state = 0
         print(state)
-        if state == 0: 
+        if state == 0:      # prints based on state
             lcd.set_cursor_pos(0, 0)
             lcd.print("GOOOOO")
         elif state == 1:
@@ -46,7 +49,7 @@ while True:
             lcd.print("STOPPP")
     if btn.value == 0 and Buttonyep == 1:
         print("buttion")
-        if state == 0: 
+        if state == 0:  # changes LED color
                 ledGreen.value = True
                 ledRed.value = False
                 ledYellow.value = False
