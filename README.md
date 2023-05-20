@@ -202,8 +202,9 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
 ## Motor Control
-### Description and Code
 
+### Description and Code
+The goal for this assignment was to recreate an engineering 2 assignment using python. In engineering 2 we were asked to control a dc motor using an arduino this time we are using a metro. The project uses a potentiometer and a map function to convert the potentiometer value to a value for the dc motor. Then by turning the potentiometer we can change the speed of the motor. 
 ```python
 import time
 from time import sleep
@@ -227,13 +228,16 @@ while True:
   
 ```  
 Code credit goes to [Graham](https://github.com/VeganPorkChop/Engineering-3-Documentation/tree/master/IntermediateCoding-Engineering%203#MotorControl)
+
 ### Evidence
 <img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true" alt="wiring2" style="width:550px;">
 Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython#Motor_Control)
+
 ### Wiring
 <img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-05-20%203.36.39%20PM.png?raw=true" alt="wiring2" style="width:550px;">
 
 ### Reflection
+The wiring for this project was the hardest part because you have to avoid sending the power from the battery back through the metro and into the computer. This causes the computer to shut down to protect itself. It is also very easy to fry the metro board. This project also reminded me about the importance of documentation. In my PID project we are using a DC motor but I had never documented the motor control assignment. Although I figured it out with some help if I had documented the motor control when I was supposed to, it would have been very helpful for the PID project.
 
 ## Photointerupter
 
