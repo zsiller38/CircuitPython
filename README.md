@@ -226,9 +226,13 @@ while True:
   time.sleep(0.1)
   
 ```  
+Code credit goes to [Graham](https://github.com/VeganPorkChop/Engineering-3-Documentation/tree/master/IntermediateCoding-Engineering%203#MotorControl)
 ### Evidence
-![spinningMetro_Optimized (https://github.com/kshinoz98/CircuitPython/raw/d20d813b4dadc8ccec0c083e8bce710b5941454e/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true)
+<img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true" alt="wiring2" style="width:550px;">
+Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython#Motor_Control)
 ### Wiring
+<img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-05-20%203.36.39%20PM.png?raw=true" alt="wiring2" style="width:550px;">
+
 ### Reflection
 
 ## Photointerupter
