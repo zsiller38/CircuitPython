@@ -231,6 +231,7 @@ Code credit goes to [Graham](https://github.com/VeganPorkChop/Engineering-3-Docu
 
 ### Evidence
 <img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true" alt="wiring2" style="width:550px;">
+
 Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython#Motor_Control)
 
 ### Wiring
