@@ -7,6 +7,7 @@
 * [CircuitPython_Servo](#circuitpython-servo)
 * [CircuitPython RainbowSensor](#rainbow-distance-sensor)
 * [CircuitPython_LCD](#circuitcython-LCD)
+* [CircuitPython Motor Control](#Motor-Control)
 * [CircuitPython Photointerupter](#Photointerupter)
 * [CircuitPython RotaryEncoder](#Rotary-Encoder)
 * [CircuitPython TempratureSensor](#Temp-Sensor)
@@ -146,11 +147,8 @@ while True:
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
 
-
-
 ### Reflection
 This project was very hard because I had trouble understanding the mapping function used. I needed to get some help from classmates to complete the code but now I understand how and why the code works. WHile coding there were problems with the if statements to based on the distance the sensor was reading. We did'nt use an elif statement and instead just used if statements. This created an issue were the code would jump statements and do the wrong thing. We did not need elif statements in c++ so it was important to learn about them.
-
 
 ## CircuitPython LCD
 
@@ -202,6 +200,36 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/lcdwiring.png?raw=true)
 ### Reflection
 This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
+
+## Motor Control
+### Description and Code
+
+```python
+import time
+from time import sleep
+import board
+import simpleio
+from analogio import AnalogIn 
+import pwmio  
+
+analog_in = AnalogIn(board.A1) #potentionmeter pin
+pin_out = pwmio.PWMOut(board.D8,duty_cycle=65535,frequency=5000)
+
+while True:
+
+  sensor_value = analog_in.value
+  # Map the sensor's range from 0<=sensor_value<=255 to 0<=sensor_value<=1023
+  mapped_value = int(simpleio.map_range(sensor_value, 0, 65535, 0, 255))
+  
+  pin_out.duty_cycle = sensor_value
+  print("mapped sensor value: ", sensor_value)
+  time.sleep(0.1)
+  
+```  
+### Evidence
+![spinningMetro_Optimized (https://github.com/kshinoz98/CircuitPython/raw/d20d813b4dadc8ccec0c083e8bce710b5941454e/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true)
+### Wiring
+### Reflection
 
 ## Photointerupter
 
