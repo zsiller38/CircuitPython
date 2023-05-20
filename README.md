@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-* [Table of Contents](#Table_Of_Contents)
-* [Hello_CircuitPython](#Hello_CircuitPython)
-* [CircuitPython_Servo](#CircuitPython_Servo)
-* [CircuitPython RainbowSensor](#Rainbow_Distance_Sensor)
-* [CircuitPython_LCD](#CircuitPython_LCD)
+* [Table of Contents](#table-of-contents)
+* [Hello_CircuitPython](#hello-circuitpython)
+* [CircuitPython_Servo](#circuitpython-servo)
+* [CircuitPython RainbowSensor](#rainbow-distance-sensor)
+* [CircuitPython_LCD](#circuitcython-LCD)
 * [CircuitPython Photointerupter](#Photointerupter)
-* [CircuitPython RotaryEncoder](#Rotary_Encoder)
-* [CircuitPython TempratureSensor](#Temp_Sensor)
+* [CircuitPython RotaryEncoder](#Rotary-Encoder)
+* [CircuitPython TempratureSensor](#Temp-Sensor)
 
 ---
 
