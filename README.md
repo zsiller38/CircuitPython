@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-* [Table of Contents](#TableOfContents)
-* [Hello_CircuitPython](#HelloCircuitPython)
-* [CircuitPython_Servo](#CircuitPythonServo)
-* [CircuitPython_LCD](#CircuitPythonLCD)
-* [CircuitPython RainbowSensor](#RainbowDistanceSensor)
+* [Table of Contents](#Table_Of_Contents)
+* [Hello_CircuitPython](#Hello_CircuitPython)
+* [CircuitPython_Servo](#CircuitPython_Servo)
+* [CircuitPython RainbowSensor](#Rainbow_Distance_Sensor)
+* [CircuitPython_LCD](#CircuitPython_LCD)
 * [CircuitPython Photointerupter](#Photointerupter)
-* [CircuitPython RotaryEncoder](#RotaryEncoder)
-* [CircuitPython TempratureSensor](#TempSensor)
+* [CircuitPython RotaryEncoder](#Rotary_Encoder)
+* [CircuitPython TempratureSensor](#Temp_Sensor)
 
 ---
 
@@ -245,7 +245,7 @@ while True:
 ### Reflection
 This code was easy to get working mainly because it was the only one that did not involve a serial monitor. I used code from [River](https://github.com/rivques/) as a baseline to understand what was going on. I initially did not know what time.monotonic meant but now I know it is simply a clock that cannot move backwards. This assignment was cool and satisfying when it was working.
 
-## Rotary_Encoder
+## Rotary Encoder
 
 ### Description and Code
 This code is using a rotary encoder to change states. The states determine what LEDs are one. A green red and yellow LEDs are used to mimick a traffic stop. Then a push button on the rotary encoder turns the light on and off once the encoder selects the state. The rotary encoder uses 5 pins. A power, ground, buton, and two others which are used to determine which way the encoder was turned and how fast. Finally an LCD is used to display prompts based on what the encoder is selecting. 
@@ -329,7 +329,7 @@ Image Credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Reflection
 This project was extremely frustrating. VS code had not been working for the previous few days so I was using Mu. Mu was actually easy to use although it is less versatile and complex than VS code. The primarly issue was with the LCD. Sometimes the LCD sucks to much power from the metro board and when this happens the board shuts of and refuses to connect. I had to implement a simple switch which would allow the board to connect to the computer before the LCD was connectd. Later on I switched to connecting the LCD after the board was already connected which was far easier. I used code from [Kaz](https://github.com/kshinoz98/CircuitPython) to help get the project started. The code is not that complex. It consists of some code assigning states based on how the encoder has moved and then if statements to turn of the LEDs. This project was cool and I enjoyed it.
 
-## Temp_Sensor
+## Temp Sensor
 
 ### Description and Code
 The goal of this code was to use a temp sensor and convert its output into celcius. Then using an LCD display the temp in celcius and farenhiet and print some phrases based on the temprature. 
