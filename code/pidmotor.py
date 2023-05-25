@@ -6,19 +6,20 @@ import time
 from analogio import AnalogOut, AnalogIn
 import simpleio
 from lcd import LCD
-from lcd import I2CPCF8574Interface
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 from digitalio import DigitalInOut, Direction, Pull
 last_photoI = False #lines 11-13 start states for variables
 current_photoI=True
 lasttime=None
 pot = AnalogIn(board.A0) #lines 14-18 setup for components
 motor = AnalogOut(board.A1)
-photoI= AnalogIn(board.A2)
+photoI= DigitalInOut(board.D7)
 i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 lcd.print("Motor Starting")
 rpm_list=[] #creates a list for all rpm values
 while True:
+    print(pot.value)
     print(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) #maps the motor value to the pot value
     motor.value = int(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) 
     current_photoI=photoI.value #reads photo interupter value
