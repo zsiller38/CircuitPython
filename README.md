@@ -2,14 +2,15 @@
 
 ## Table of Contents
 
-* [Table of Contents](#TableOfContents)
-* [Hello_CircuitPython](#HelloCircuitPython)
-* [CircuitPython_Servo](#CircuitPythonServo)
-* [CircuitPython_LCD](#CircuitPythonLCD)
-* [CircuitPython RainbowSensor](#RainbowDistanceSensor)
+* [Table of Contents](#table-of-contents)
+* [Hello_CircuitPython](#hello-circuitpython)
+* [CircuitPython_Servo](#circuitpython-servo)
+* [CircuitPython RainbowSensor](#rainbow-distance-sensor)
+* [CircuitPython_LCD](#circuitcython-LCD)
+* [CircuitPython Motor Control](#Motor-Control)
 * [CircuitPython Photointerupter](#Photointerupter)
-* [CircuitPython RotaryEncoder](#RotaryEncoder)
-* [CircuitPython TempratureSensor](#TempSensor)
+* [CircuitPython RotaryEncoder](#Rotary-Encoder)
+* [CircuitPython TempratureSensor](#Temp-Sensor)
 
 ---
 
@@ -146,11 +147,8 @@ while True:
 ### Wiring
 ![spinningMetro_Optimized](https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202022-10-11%20153206.png?raw=true)
 
-
-
 ### Reflection
 This project was very hard because I had trouble understanding the mapping function used. I needed to get some help from classmates to complete the code but now I understand how and why the code works. WHile coding there were problems with the if statements to based on the distance the sensor was reading. We did'nt use an elif statement and instead just used if statements. This created an issue were the code would jump statements and do the wrong thing. We did not need elif statements in c++ so it was important to learn about them.
-
 
 ## CircuitPython LCD
 
@@ -203,6 +201,45 @@ Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Reflection
 This project was relativly hard because you had to make sure you did not skip numbers while counting. Getting the ability to toggle between counting up and down was also intresting. When using an LCD it is important to have the right LCD format and configuration, there is also a pontentiometer on the back of the LCD that can be used to adjust the btightness and visibility. The wiring for the LCD was much easier than the first time I used an LCD display.
 
+## Motor Control
+
+### Description and Code
+The goal for this assignment was to recreate an engineering 2 assignment using python. In engineering 2 we were asked to control a dc motor using an arduino this time we are using a metro. The project uses a potentiometer and a map function to convert the potentiometer value to a value for the dc motor. Then by turning the potentiometer we can change the speed of the motor. 
+```python
+import time
+from time import sleep
+import board
+import simpleio
+from analogio import AnalogIn 
+import pwmio  
+
+analog_in = AnalogIn(board.A1) #potentionmeter pin
+pin_out = pwmio.PWMOut(board.D8,duty_cycle=65535,frequency=5000)
+
+while True:
+
+  sensor_value = analog_in.value
+  # Map the sensor's range from 0<=sensor_value<=255 to 0<=sensor_value<=1023
+  mapped_value = int(simpleio.map_range(sensor_value, 0, 65535, 0, 255))
+  
+  pin_out.duty_cycle = sensor_value
+  print("mapped sensor value: ", sensor_value)
+  time.sleep(0.1)
+  
+```  
+Code credit goes to [Graham](https://github.com/VeganPorkChop/Engineering-3-Documentation/tree/master/IntermediateCoding-Engineering%203#MotorControl)
+
+### Evidence
+<img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Untitled_%20Nov%202,%202022%2012_49%20PM.gif?raw=true" alt="wiring2" style="width:550px;">
+
+Image credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython#Motor_Control)
+
+### Wiring
+<img src="https://github.com/zsiller38/CircuitPython/blob/master/Images/Screenshot%202023-05-20%203.36.39%20PM.png?raw=true" alt="wiring2" style="width:550px;">
+
+### Reflection
+The wiring for this project was the hardest part because you have to avoid sending the power from the battery back through the metro and into the computer. This causes the computer to shut down to protect itself. It is also very easy to fry the metro board. This project also reminded me about the importance of documentation. In my PID project we are using a DC motor but I had never documented the motor control assignment. Although I figured it out with some help if I had documented the motor control when I was supposed to, it would have been very helpful for the PID project.
+
 ## Photointerupter
 
 ### Description and Code
@@ -245,7 +282,7 @@ while True:
 ### Reflection
 This code was easy to get working mainly because it was the only one that did not involve a serial monitor. I used code from [River](https://github.com/rivques/) as a baseline to understand what was going on. I initially did not know what time.monotonic meant but now I know it is simply a clock that cannot move backwards. This assignment was cool and satisfying when it was working.
 
-## Rotary_Encoder
+## Rotary Encoder
 
 ### Description and Code
 This code is using a rotary encoder to change states. The states determine what LEDs are one. A green red and yellow LEDs are used to mimick a traffic stop. Then a push button on the rotary encoder turns the light on and off once the encoder selects the state. The rotary encoder uses 5 pins. A power, ground, buton, and two others which are used to determine which way the encoder was turned and how fast. Finally an LCD is used to display prompts based on what the encoder is selecting. 
@@ -329,7 +366,7 @@ Image Credit goes to [Kaz](https://github.com/kshinoz98/CircuitPython)
 ### Reflection
 This project was extremely frustrating. VS code had not been working for the previous few days so I was using Mu. Mu was actually easy to use although it is less versatile and complex than VS code. The primarly issue was with the LCD. Sometimes the LCD sucks to much power from the metro board and when this happens the board shuts of and refuses to connect. I had to implement a simple switch which would allow the board to connect to the computer before the LCD was connectd. Later on I switched to connecting the LCD after the board was already connected which was far easier. I used code from [Kaz](https://github.com/kshinoz98/CircuitPython) to help get the project started. The code is not that complex. It consists of some code assigning states based on how the encoder has moved and then if statements to turn of the LEDs. This project was cool and I enjoyed it.
 
-## Temp_Sensor
+## Temp Sensor
 
 ### Description and Code
 The goal of this code was to use a temp sensor and convert its output into celcius. Then using an LCD display the temp in celcius and farenhiet and print some phrases based on the temprature. 
