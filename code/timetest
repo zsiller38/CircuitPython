@@ -1,0 +1,7 @@
+import board
+import time
+
+
+while True:
+    time.monotonic_ns
+    print(time.monotonic)
