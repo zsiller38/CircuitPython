@@ -15,7 +15,7 @@ pot = AnalogIn(board.A0) #lines 14-18 setup for components
 motor = AnalogOut(board.A1)
 photoI= DigitalInOut(board.D7) 
 i2c = board.I2C()
-lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 lcd.print("Motor Starting")
 rpm_list=[] #creates a list for all rpm values
 truetime=time.monotonic()

@@ -17,7 +17,7 @@ state = 0
 Buttonyep = 1
 
 i2c = board.I2C()
-lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 
 ledGreen = DigitalInOut(board.D8)     # assigns led pins 
 ledYellow = DigitalInOut(board.D9)
