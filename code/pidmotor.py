@@ -18,12 +18,13 @@ i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 lcd.print("Motor Starting")
 rpm_list=[] #creates a list for all rpm values
+truetime=time.monotonic()
 while True:
     print(pot.value, current_photoI)
     print(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) #maps the motor value to the pot value
     motor.value = int(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) 
     current_photoI = photoI.value #reads photo interupter value
-    print(time.monotonic)
+    print(truetime)
     if(last_photoI != current_photoI):
         time1=time.monotonic() #reads out time in fractional seconds
         print(time1)
