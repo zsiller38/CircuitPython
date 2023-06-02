@@ -9,10 +9,12 @@ from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 from digitalio import DigitalInOut, Direction, Pull
 from PID_CPY import PID
+from simple_pid import PID
 
 pid = PID(1, 0.1, 0.05, setpoint=1)
 pid.output_limits = (0, 65535)
-
+pid.sample_time = 0.01
+pid.tunings = (1.0, 0.2, 0.4)
 
 last_photoI = None #lines 11-13 start states for variables
 current_photoI = None
@@ -27,6 +29,7 @@ rpm_list=[] #creates a list for all rpm values
 truetime=time.monotonic()
 while True:
     pid.setpoint = pot.value
+    output = pid(pot.value)
     print(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) #maps the motor value to the pot value
     motor.value = int(simpleio.map_range(pot.value, 96, 65520, 0, 65535)) 
     current_photoI = photoI.value #reads photo interupter value
